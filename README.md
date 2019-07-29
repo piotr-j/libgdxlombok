@@ -1,10 +1,11 @@
 # Lombok + Libgdx example
 
-Works on desktop, android, ios, html.
+Tested on desktop, android, ios, html.
 
 ## Limitations
 
 Runtime compile on gwt doesnt work. 
+Quite possible that some other things dont quite work on gwt as well.
 
 
 ## License
