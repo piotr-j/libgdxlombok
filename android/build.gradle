@@ -18,13 +18,33 @@ android {
     }
     defaultConfig {
         applicationId "com.mygdx.game"
-        minSdkVersion 9
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
+
+    flavorDimensions "type"
+    productFlavors {
+        dev {
+            resValue "string", "app_name", "DEV Test game"
+            dimension "type"
+            // makes it so dev and prod dont conflict, but breaks stuff that relies on package name, like store
+            applicationIdSuffix = '.dev'
+        }
+
+        prod {
+            resValue "string", "app_name", "PRO Test game"
+            dimension "type"
+        }
+    }
+
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
