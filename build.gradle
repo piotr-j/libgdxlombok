@@ -43,12 +43,12 @@ allprojects {
     }
 }
 
-project(":desktop") {
+project("app:desktop") {
     apply plugin: "java-library"
 
 
     dependencies {
-        implementation project(":core")
+        implementation project(":app:core")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
 
@@ -57,13 +57,13 @@ project(":desktop") {
     }
 }
 
-project(":android") {
+project("app:android") {
     apply plugin: "android"
 
     configurations { natives }
 
     dependencies {
-        implementation project(":core")
+        implementation project(":app:core")
         api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -76,13 +76,13 @@ project(":android") {
     }
 }
 
-project(":ios") {
+project("app:ios") {
     apply plugin: "java-library"
     apply plugin: "robovm"
 
 
     dependencies {
-        implementation project(":core")
+        implementation project(":app:core")
         api "com.mobidevelop.robovm:robovm-rt:$roboVMVersion"
         api "com.mobidevelop.robovm:robovm-cocoatouch:$roboVMVersion"
         api "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
@@ -96,7 +96,7 @@ project(":ios") {
     }
 }
 
-project(":html") {
+project("app:html") {
     apply plugin: "java-library"
     apply plugin: "gwt"
     apply plugin: "war"
@@ -104,7 +104,7 @@ project(":html") {
     configurations { lombok }
 
     dependencies {
-        implementation project(":core")
+        implementation project(":app:core")
         api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
@@ -114,7 +114,7 @@ project(":html") {
     }
 }
 
-project(":core") {
+project("app:core") {
     apply plugin: "java-library"
 
 
