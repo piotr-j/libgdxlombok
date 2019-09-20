@@ -32,11 +32,20 @@ public class MyGdxGame extends ApplicationAdapter {
 		Gdx.app.log("Hello", "data: " + new TestData(6.123f));
 
 		// seems its undefined by default on gwt? perhaps there is something about that in the docs i didnt quite read
-		log.setLevel(Level.ALL);
-		log.log(Level.INFO, "Hello from @Log ??");
+		// same on ios? meh
+//		log.setLevel(Level.ALL);
+//		log.log(Level.INFO, "Hello from @Log ??");
 
-		Logger logger = Logger.getLogger("Logger person");
-		logger.log(Level.SEVERE, "Hello from logger??");
+//		Logger logger = Logger.getLogger("Logger person");
+//		logger.log(Level.SEVERE, "Hello from logger??");
+
+		// who knows if this owrks on android
+		TestMapper mapper = TestMapper.INSTANCE;
+		TestThingDTO value = new TestThingDTO(1.0f);
+		TestThing from = mapper.from(value);
+		TestThingDTO to = mapper.to(from);
+
+		Gdx.app.log("hello", value + " == " + to);
 	}
 
 	@Override

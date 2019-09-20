@@ -7,10 +7,17 @@ import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
 import com.mygdx.game.MyGdxGame;
 
+import java.util.logging.ConsoleHandler;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
+        // got to init handler, apparently
+        Logger global = Logger.getGlobal();
+        global.addHandler(new ConsoleHandler());
         return new IOSApplication(new MyGdxGame(), config);
     }
 
